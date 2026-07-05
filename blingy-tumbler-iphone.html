@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Blingy Tumblers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #ff6b9d, #667eea);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ff6b9d, #667eea);
+            padding: 10px;
+        }
+
+        .nav-links li {
+            margin: 10px 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-secondary {
+            background: #ff6b9d;
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 50px 0;
+            background: #f9f9f9;
+        }
+
+        .products h2 {
+            text-align: center;
+            color: #ff6b9d;
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:active {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #ff6b9d;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 50px 0;
+            background: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 16px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b9d;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea, #ff6b9d);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        /* About Section */
+        .about {
+            padding: 50px 0;
+            background: white;
+        }
+
+        .about h2 {
+            text-align: center;
+            color: #ff6b9d;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .about p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about ul {
+            margin: 20px 0;
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .about li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">✨ Blingy Tumblers</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#products" onclick="closeMenu()">Products</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Sparkle & Shine</h1>
+        <p>Handmade Blingy Tumblers That Make You Shine</p>
+        <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2>Our Collection</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #ff6b9d, #c44569);">✨</div>
+                    <div class="product-info">
+                        <h3>Glitter Dream Tumbler</h3>
+                        <p>20oz with holographic glitter and rhinestone accents</p>
+                        <div class="price">$24.99</div>
+                        <button class="btn btn-secondary" onclick="addToCart('Glitter Dream')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">💎</div>
+                    <div class="product-info">
+                        <h3>Purple Bling Queen</h3>
+                        <p>30oz with amethyst crystals and ombre coating</p>
+                        <div class="price">$27.99</div>
+                        <button class="btn btn-secondary" onclick="addToCart('Purple Bling')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">🌹</div>
+                    <div class="product-info">
+                        <h3>Rose Gold Sparkle</h3>
+                        <p>20oz with rose gold glitter and pearl finish</p>
+                        <div class="price">$26.99</div>
+                        <button class="btn btn-secondary" onclick="addToCart('Rose Gold')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">🧜‍♀️</div>
+                    <div class="product-info">
+                        <h3>Ocean Mermaid</h3>
+                        <p>30oz with mermaid scale effect and turquoise bling</p>
+                        <div class="price">$28.99</div>
+                        <button class="btn btn-secondary" onclick="addToCart('Ocean Mermaid')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #fa709a, #fee140);">🌅</div>
+                    <div class="product-info">
+                        <h3>Sunset Glow</h3>
+                        <p>20oz with sunset ombre and iridescent glitter</p>
+                        <div class="price">$25.99</div>
+                        <button class="btn btn-secondary" onclick="addToCart('Sunset Glow')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">🦄</div>
+                    <div class="product-info">
+                        <h3>Unicorn Dream</h3>
+                        <p>20oz with pastel gradient and holographic stars</p>
+                        <div class="price">$26.99</div>
+                        <button class="btn btn-secondary" onclick="addToCart('Unicorn Dream')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Blingy Tumblers</h2>
+            <p>Welcome to Blingy Tumblers, where we combine quality drinkware with sparkle and style! Each tumbler is handcrafted with love, using premium materials and high-quality rhinestones, glitter, and embellishments.</p>
+            <p><strong>Why Choose Us:</strong></p>
+            <ul>
+                <li><strong>Handmade:</strong> Each piece is individually crafted with attention to detail</li>
+                <li><strong>Durable:</strong> Double-wall insulated construction keeps drinks cold for 24+ hours</li>
+                <li><strong>Unique:</strong> No two tumblers are exactly alike</li>
+                <li><strong>Perfect Gifts:</strong> Ideal for birthdays, weddings, parties, and corporate events</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            <p style="text-align: center; margin-top: 30px; color: #666;">
+                <strong>Contact Info:</strong><br>
+                Email: info@blingytumblers.com<br>
+                Phone: (555) 123-4567<br>
+                Instagram: @blingytumblers
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Blingy Tumblers. All rights reserved. Made with ✨ and 💎</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+        }
+
+        // Add to cart
+        function addToCart(productName) {
+            alert(productName + ' added to cart! ✨');
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert('Thank you, ' + name + '! Your message has been sent. We will get back to you soon! 💎');
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
