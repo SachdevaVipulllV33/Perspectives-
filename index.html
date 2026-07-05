@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Blingy Tumblers - Handmade Custom Drinkware</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">✨ Blingy Tumblers</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#custom">Custom Orders</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sparkle & Shine</h1>
+            <p>Handmade Blingy Tumblers That Make You Shine</p>
+            <button class="btn btn-primary" onclick="scrollToSection('products')">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2>Our Collection</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);"></div>
+                    <div class="product-info">
+                        <h3>Glitter Dream Tumbler</h3>
+                        <p>20oz double-wall insulated tumbler with holographic glitter and rhinestone accents</p>
+                        <div class="price">$24.99</div>
+                        <button class="btn btn-secondary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="product-info">
+                        <h3>Purple Bling Queen</h3>
+                        <p>30oz tumbler with amethyst crystals and metallic purple ombre coating</p>
+                        <div class="price">$27.99</div>
+                        <button class="btn btn-secondary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="product-info">
+                        <h3>Rose Gold Sparkle</h3>
+                        <p>20oz tumbler with rose gold glitter, pearl finish, and crystal gemstones</p>
+                        <div class="price">$26.99</div>
+                        <button class="btn btn-secondary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="product-info">
+                        <h3>Ocean Mermaid</h3>
+                        <p>30oz tumbler with mermaid scale effect and turquoise bling embellishments</p>
+                        <div class="price">$28.99</div>
+                        <button class="btn btn-secondary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="product-info">
+                        <h3>Sunset Glow</h3>
+                        <p>20oz tumbler with sunset ombre and iridescent glitter coating</p>
+                        <div class="price">$25.99</div>
+                        <button class="btn btn-secondary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <div class="product-info">
+                        <h3>Unicorn Dream</h3>
+                        <p>20oz tumbler with pastel gradient and holographic stars and diamonds</p>
+                        <div class="price">$26.99</div>
+                        <button class="btn btn-secondary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Orders Section -->
+    <section id="custom" class="custom-orders">
+        <div class="container">
+            <h2>Custom Orders</h2>
+            <div class="custom-content">
+                <div class="custom-text">
+                    <h3>Design Your Own Blingy Tumbler</h3>
+                    <p>Don't see exactly what you want? We create custom handmade tumblers tailored to your preferences!</p>
+                    <ul class="features-list">
+                        <li>✨ Choose your base color and design</li>
+                        <li>💎 Select from premium bling options</li>
+                        <li>🎨 Custom names, initials, or artwork</li>
+                        <li>🎁 Perfect for gifts and special occasions</li>
+                        <li>📦 Each tumbler is carefully crafted and sealed</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="scrollToSection('contact')">Request a Custom Order</button>
+                </div>
+                <div class="custom-image">
+                    <div style="font-size: 80px; text-align: center; color: #ff6b9d;">💎</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Blingy Tumblers</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to Blingy Tumblers, where we combine quality drinkware with sparkle and style! Each tumbler is handcrafted with love, using premium materials and high-quality rhinestones, glitter, and embellishments.</p>
+                    <p>Our tumblers are:</p>
+                    <ul class="features-list">
+                        <li><strong>Handmade:</strong> Each piece is individually crafted with attention to detail</li>
+                        <li><strong>Durable:</strong> Double-wall insulated construction keeps drinks cold for 24+ hours</li>
+                        <li><strong>Unique:</strong> No two tumblers are exactly alike</li>
+                        <li><strong>Perfect Gifts:</strong> Ideal for birthdays, weddings, parties, and corporate events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Email:</strong> <a href="mailto:info@blingytumblers.com">info@blingytumblers.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                    <p><strong>Instagram:</strong> @blingytumblers</p>
+                    <p><strong>Hours:</strong> Monday - Friday, 9AM - 6PM EST</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Blingy Tumblers. All rights reserved. Made with ✨ and 💎</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
